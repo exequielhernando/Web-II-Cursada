@@ -1,9 +1,11 @@
 <?php
-
+require_once "tareas.php";
 function Home(){
 
     $Titulo = "Lista de tareas";
-
+    
+   
+    
 ?>
 
 <!doctype html>
@@ -23,8 +25,15 @@ function Home(){
         <h1><?php echo $Titulo ?></h1>
         <div class="container">
             <ul class="list-group">
-                <li class="list-group-item">Tarea 1</li>
-                <li class="list-group-item">Tarea 2</li>
+                <?php
+                    foreach (GetTareas() as $tarea) {
+                        if ($tarea['completada'] == 1) {
+                            echo '<li class="list-group-item"><s>'.$tarea['titulo']. ':'.$tarea['descripcion'].'</s></li>';
+                        }else {
+                            echo '<li class="list-group-item">'.$tarea['titulo']. ':'.$tarea['descripcion'].'</li>';  
+                        }
+                    }; 
+                ?>
             </ul>
         </div>
         <div class="container">
