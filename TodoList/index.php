@@ -1,11 +1,7 @@
 <?php
 require_once "tareas.php";
 function Home(){
-
     $Titulo = "Lista de tareas";
-    
-   
-    
 ?>
 
 <!doctype html>
@@ -28,26 +24,26 @@ function Home(){
                 <?php
                     foreach (GetTareas() as $tarea) {
                         if ($tarea['completada'] == 1) {
-                            echo '<li class="list-group-item"><s>'.$tarea['titulo']. ':'.$tarea['descripcion'].'</s></li>';
+                            echo '<li class="list-group-item"><s>'.$tarea['titulo']. ':'.$tarea['descripcion'].'</s><a href="borrar/'.$tarea['id'].'">BORRAR</a><a href="borrar/'.$tarea['id'].'">BORRAR</a></li>';
                         }else {
-                            echo '<li class="list-group-item">'.$tarea['titulo']. ':'.$tarea['descripcion'].'</li>';  
+                            echo '<li class="list-group-item">'.$tarea['titulo']. ':'.$tarea['descripcion'].'<a href="borrar/'.$tarea['id'].'">BORRAR</a> | <a href="completada/'.$tarea['id'].'">COMPLETADA</a></li>';  
                         }
                     }; 
                 ?>
             </ul>
         </div>
         <div class="container">
-            <form>
+            <form method="post" action="agregar">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Titulo</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1">
+                    <input type="text" class="form-control" id="tituloForm" name="tituloForm"/>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Descripcion</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" >
+                    <input type="text" class="form-control" id="descripcionForm" name="descripcionForm"/>
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="completadaForm" name="completadaForm"/>
                     <label class="form-check-label" for="exampleCheck1">Completada</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Crear tarea</button>
