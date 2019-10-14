@@ -24,7 +24,7 @@ function Home(){
                 <?php
                     foreach (GetTareas() as $tarea) {
                         if ($tarea['completada'] == 1) {
-                            echo '<li class="list-group-item"><s>'.$tarea['titulo']. ':'.$tarea['descripcion'].'</s><a href="borrar/'.$tarea['id'].'">BORRAR</a><a href="borrar/'.$tarea['id'].'">BORRAR</a></li>';
+                            echo '<li class="list-group-item"><s>'.$tarea['titulo']. ':'.$tarea['descripcion'].'</s><a href="borrar/'.$tarea['id'].'">BORRAR</a></li>';
                         }else {
                             echo '<li class="list-group-item">'.$tarea['titulo']. ':'.$tarea['descripcion'].'<a href="borrar/'.$tarea['id'].'">BORRAR</a> | <a href="completada/'.$tarea['id'].'">COMPLETADA</a></li>';  
                         }
