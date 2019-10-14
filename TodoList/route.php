@@ -1,6 +1,4 @@
 <?php
-    require_once "index.php";
-    require_once "tareas.php";
     require_once "controller/TareasController.php";
 
 
@@ -15,9 +13,9 @@
         if ($partesURL[0] == 'agregar'){
             $controller->InsertTarea();
         }elseif ($partesURL[0] == 'borrar') {
-            BorrarTarea($partesURL[1]);
+            $controller->BorrarTarea($partesURL[1]);
         }elseif($partesURL[0] == 'completada'){
-            CompletarTarea($partesURL[1]);
+            $controller->CompletarTarea($partesURL[1]);
         }
     }
 

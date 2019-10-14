@@ -2,8 +2,9 @@
 
 class TareasModel{
     private $db;
+
     function __construct() {
-        $this->db = Connect();
+        $this->db = $this->Connect();
     }
 
     private function Connect(){
@@ -22,6 +23,14 @@ class TareasModel{
         
         $sentencia = $this->db->prepare("INSERT INTO tarea(titulo, descripcion, completada) VALUES(?,?,?)");
         $sentencia->execute(array( $titulo, $descripcion,$completada));
+    }
+    function BorrarTarea($id_tarea) {
+        $sentencia = $this->db->prepare("delete from tarea where id=?");
+        $sentencia->execute(array($id_tarea));
+    }
+    function CompletarTarea($id_tarea){
+        $sentencia = $this->db->prepare("UPDATE tarea SET completada=1 where id=?");
+        $sentencia->execute(array($id_tarea));
     }
 }
 
