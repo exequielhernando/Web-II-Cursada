@@ -28,14 +28,17 @@ class TareasController{
     
         header("Location: http://".$_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
     }
-    function BorrarTarea($id_tarea) {
-        $this->model->BorrarTarea($id_tarea);
-
+    function BorrarTarea($param) {
+        $this->model->BorrarTarea($param[0]);
         header("Location: http://".$_SERVER["SERVER_NAME"] .dirname($_SERVER["PHP_SELF"]));
     }
-    function CompletarTarea($id_tarea){
-        $this->model->CompletarTarea($id_tarea);
+    function CompletarTarea($param){
+        $this->model->CompletarTarea($param[0]);
         header("Location: http://".$_SERVER["SERVER_NAME"] .dirname($_SERVER["PHP_SELF"]));
+    }
+    function EditarTarea($id_tarea){
+        $tarea = $this->model->GetTarea($id_tarea);
+        $this->view->MostrarTarea($tarea);
     }
 }
 

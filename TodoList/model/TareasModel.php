@@ -14,9 +14,13 @@ class TareasModel{
      }
 
     function GetTareas(){
-
         $sentencia = $this->db->prepare( "select * from tarea");
         $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function GetTarea($id_tarea){
+        $sentencia = $this->db->prepare( "select * from tarea where id = ?");
+        $sentencia->execute(array($id_tarea));
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
     function InsertarTarea($titulo, $descripcion,$completada){
