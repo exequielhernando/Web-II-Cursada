@@ -1,6 +1,9 @@
 <?php
 require_once "config/ConfigApp.php";
 require_once "controller/TareasController.php";
+require_once "controller/LoginController.php";
+require_once "controller/UsuarioController.php";
+
 
 function parseURL($url)
 {
