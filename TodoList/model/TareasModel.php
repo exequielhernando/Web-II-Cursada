@@ -14,12 +14,12 @@ class TareasModel{
      }
 
     function GetTareas(){
-        $sentencia = $this->db->prepare( "select * from tarea");
+        $sentencia = $this->db->prepare( "SELECT * FROM tarea");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
     function GetTarea($id_tarea){
-        $sentencia = $this->db->prepare( "select * from tarea where id = ?");
+        $sentencia = $this->db->prepare( "SELECT * FROM tarea WHERE id = ?");
         $sentencia->execute(array($id_tarea));
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -29,11 +29,11 @@ class TareasModel{
         $sentencia->execute(array( $titulo, $descripcion,$completada));
     }
     function BorrarTarea($id_tarea) {
-        $sentencia = $this->db->prepare("delete from tarea where id=?");
+        $sentencia = $this->db->prepare("DELETE FROM tarea WHERE id=?");
         $sentencia->execute(array($id_tarea));
     }
     function CompletarTarea($id_tarea){
-        $sentencia = $this->db->prepare("UPDATE tarea SET completada=1 where id=?");
+        $sentencia = $this->db->prepare("UPDATE tarea SET completada=1 WHERE id=?");
         $sentencia->execute(array($id_tarea));
     }
 }
