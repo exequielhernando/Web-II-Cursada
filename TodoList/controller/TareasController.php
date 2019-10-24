@@ -1,18 +1,22 @@
 <?php
+
 require_once "./View/TareasView.php";
 require_once "./Model/TareasModel.php";
+require_once  "SecuredController.php";
 
-class TareasController{
+
+class TareasController extends SecuredController{
     private $view;
     private $model;
     private $Titulo;
 
     function __construct() {
+        parent::__construct();
         $this->view = new TareasView();
         $this->model = new TareasModel();
         $this->Titulo = "Lista de tareas Controlador 1";
     }
-    function Home(){
+    function Home(){     
         $Tareas = $this->model->GetTareas();
         $this->view->Mostrar($this->Titulo, $Tareas);
     }
