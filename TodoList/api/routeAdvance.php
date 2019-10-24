@@ -1,28 +1,29 @@
 <?php
 require_once "config/ConfigApi.php"; 
+require_once "controller/TareasApiController.php"; 
 
 function parseURL($url)
 {
   $urlExploded = explode('/', $url);
-  $arrayReturn[ConfigApp::$ACTION] = $urlExploded[0];
+  $arrayReturn[ConfigApi::$RESOURCE] = $urlExploded[0].'#'.$_SERVER['REQUEST_METHOD'];
 
   #borrar/1/2/3/4
-  $arrayReturn[ConfigApp::$PARAMS] = isset($urlExploded[1]) ? array_slice($urlExploded,1) : null;
+  $arrayReturn[ConfigApi::$PARAMS] = isset($urlExploded[1]) ? array_slice($urlExploded,1) : null;
   return $arrayReturn;
 }
 
-if(isset($_GET['action'])){
+if(isset($_GET['resource'])){
    #$urlData[ACTION] = borrar
    #$urlData[PARAMS] = [1,2,3,4]
 
-    $urlData = parseURL($_GET['action']);
-    $action = $urlData[ConfigApp::$ACTION]; //home
+    $urlData = parseURL($_GET['resource']);
+    $resource = $urlData[ConfigApi::$RESOURCE]; //home
     
-    if(array_key_exists($action,ConfigApp::$ACTIONS)){
-        $params = $urlData[ConfigApp::$PARAMS];
-        $action = explode('#',ConfigApp::$ACTIONS[$action]); //Array[0] -> TareasController [1] -> BorrarTarea
-        $controller =  new $action[0]();
-        $metodo = $action[1];
+    if(array_key_exists($resource,ConfigApi::$RESOURCES)){
+        $params = $urlData[ConfigApi::$PARAMS];
+        $resource = explode('#',ConfigApi::$RESOURCES[$resource]); //Array[0] -> TareasController [1] -> BorrarTarea
+        $controller =  new $resource[0]();
+        $metodo = $resource[1];
         if(isset($params) &&  $params != null){
             echo $controller->$metodo($params);
         }
