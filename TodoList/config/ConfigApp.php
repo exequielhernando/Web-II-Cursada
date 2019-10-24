@@ -12,10 +12,12 @@ class ConfigApp{
         'agregar' => 'TareasController#InsertTarea',
         'borrar' => 'TareasController#BorrarTarea',
         'completada' => 'TareasController#CompletarTarea',
+        'editar'=> 'TareasController#EditarTarea',
+        'guardarEditar'=> 'TareasController#GuardarEditarTarea',
         'login' => 'LoginController#login',
         'logout' => 'LoginController#logout',
         'verificarLogin' => 'LoginController#verificarLogin',
-        'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario',
+        'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario'
     ];
 }
 

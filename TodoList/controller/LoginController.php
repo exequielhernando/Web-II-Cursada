@@ -27,6 +27,7 @@ class LoginController{
             $usuario = $_POST["usuarioId"];
             $password = $_POST["passwordId"];
             $dbUser = $this->model->GetUser($usuario);
+
             if(isset($dbUser)){
                 if(password_verify($password, $dbUser[0]["password"])) {
                     //mostrar lista de tareas
@@ -34,7 +35,6 @@ class LoginController{
                     $_SESSION["User"] = $usuario;
                     header(HOME);
                 }else{
-                    echo isset($dbUser);
                     $this->view->mostrarLogin("Contraseña Incorrecta");
                 }
             }else{

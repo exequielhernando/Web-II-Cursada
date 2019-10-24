@@ -36,6 +36,11 @@ class TareasModel{
         $sentencia = $this->db->prepare("UPDATE tarea SET completada=1 where id=?");
         $sentencia->execute(array($id_tarea));
     }
+    function GuardarEditarTarea($titulo,$descripcion,$completada,$id){
+        $sentencia = $this->db->prepare( "UPDATE tarea SET titulo = ?, descripcion = ?, completada = ? where id=?");
+        $sentencia->execute(array($titulo,$descripcion,$completada,$id));
+      }
+    
 }
 
 
