@@ -13,7 +13,7 @@ class ConfigApi{
         'completada' => 'TareasController#CompletarTarea',
         'login' => 'LoginController#login',
         'verificarLogin' => 'LoginController#verificarLogin',
-        'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario',
+        'mostrarUsuarios'=> 'UsuarioController#MostrarUsuario'
     ];
 }
 

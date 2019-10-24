@@ -1,5 +1,5 @@
 <?php
-require_once "config/ConfigApi.php";
+require_once "config/ConfigApi.php"; 
 
 function parseURL($url)
 {
