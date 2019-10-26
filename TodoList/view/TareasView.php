@@ -10,10 +10,6 @@ class TareasView{
     function Mostrar($Titulo, $Tareas){
         $this->Smarty->assign('Titulo',$Titulo);
         $this->Smarty->assign('Tareas',$Tareas);
-<<<<<<< HEAD
-=======
-        //$smarty->debugging = true;
->>>>>>> master
         $this->Smarty->display('templates/home.tpl');
       
     }
